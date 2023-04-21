@@ -1,6 +1,7 @@
 
 package acme.features.student.enrolment;
 
+import java.time.Duration;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,8 +10,10 @@ import org.springframework.stereotype.Service;
 import acme.entities.course.Course;
 import acme.entities.enrolments.Activity;
 import acme.entities.enrolments.Enrolment;
+import acme.framework.components.accounts.Principal;
 import acme.framework.components.jsp.SelectChoices;
 import acme.framework.components.models.Tuple;
+import acme.framework.helpers.MomentHelper;
 import acme.framework.services.AbstractService;
 import acme.roles.Student;
 
@@ -36,17 +39,14 @@ public class EnrolmentShowService extends AbstractService<Student, Enrolment> {
 
 	@Override
 	public void authorise() {
-		boolean status;
-		int masterId;
-		Enrolment enrolment;
-		Student student;
 
-		masterId = super.getRequest().getData("id", int.class);
-		enrolment = this.repository.findEnrolmentById(masterId);
-		student = enrolment.getStudent();
-		status = super.getRequest().getPrincipal().hasRole(student);
-
-		super.getResponse().setAuthorised(status);
+		Enrolment object;
+		int id;
+		id = super.getRequest().getData("id", int.class);
+		object = this.repository.findEnrolmentById(id);
+		final Principal principal = super.getRequest().getPrincipal();
+		final int userAccountId = principal.getAccountId();
+		super.getResponse().setAuthorised(object.getStudent().getUserAccount().getId() == userAccountId);
 	}
 
 	@Override
@@ -65,16 +65,16 @@ public class EnrolmentShowService extends AbstractService<Student, Enrolment> {
 		assert object != null;
 
 		Tuple tuple;
-		Double workTime;
+		int workTime;
 		Collection<Course> courses;
 		SelectChoices choices;
 
 		courses = this.repository.findAllCourses();
 		choices = SelectChoices.from(courses, "title", object.getCourse());
 
-		workTime = this.workTime();
+		workTime = this.getWorkTime(object.getId());
 
-		tuple = super.unbind(object, "code", "motivation", "goals", "finalised");
+		tuple = super.unbind(object, "code", "motivation", "goals", "finalised", "ccHolder");
 		tuple.put("workTime", workTime);
 		tuple.put("course", choices.getSelected().getKey());
 		tuple.put("courses", choices);
@@ -82,16 +82,17 @@ public class EnrolmentShowService extends AbstractService<Student, Enrolment> {
 		super.getResponse().setData(tuple);
 	}
 
-	public Double workTime() {
-		double res = 0;
-		final int enrolmentId = super.getRequest().getData("id", int.class);
+	// Aux --------------------------------------------------------------------
+
+	private int getWorkTime(final int enrolmentId) {
+		int result = 0;
 		final Collection<Activity> activities = this.repository.findActivitiesByEnrolmentId(enrolmentId);
 		for (final Activity activity : activities) {
-			final long activityTime = Math.abs(activity.getEndDate().getTime() - activity.getStartDate().getTime());
-			final double activityTimeInHours = activityTime / 3600000;
-			res += activityTimeInHours;
+			final Duration duration = MomentHelper.computeDuration(activity.getStartDate(), activity.getEndDate());
+			final int diffInHours = (int) duration.toHours();
+			result += diffInHours;
 		}
-		return res;
+		return result;
 	}
 
 }

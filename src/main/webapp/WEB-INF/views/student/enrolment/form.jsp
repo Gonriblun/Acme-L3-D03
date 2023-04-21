@@ -34,7 +34,7 @@
 	
 	<jstl:choose>	 
 		<jstl:when test="${_command == 'show' && finalised == true}">
-			<acme:button code="student.enrolment.form.button.activities" action="/student/activity/list?enrolmentId=${id}"/>			
+			<acme:button code="student.enrolment.activities" action="/student/activity/list?masterId=${id}"/>			
 		</jstl:when>
 		<jstl:when test="${acme:anyOf(_command, 'show|update|delete|finalise') && finalised == false}">
 			<acme:submit code="student.enrolment.form.button.update" action="/student/enrolment/update"/> 
