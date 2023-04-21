@@ -1,3 +1,3 @@
-key,code,title,abstract$,goals,estimatedTime,key:assitant,key:course
-tutorial-01,ABC1123,Primero,Primer tutorial del curso 1,Insercion de datos1,1.4,assistant-01,course-01
-tutorial-02,ABC9124,Segundo,Primer tutorial del curso 2,Insercion de datos2,2.5,assistant-02,course-02
+key,code,title,abstract$,goals,estimatedTime,draftMode,key:assitant,key:course
+tutorial-01,ABC1123,Primero,Primer tutorial del curso 1,Insercion de datos1,1.4,true,assistant-01,course-01
+tutorial-02,ABC9124,Segundo,Primer tutorial del curso 2,Insercion de datos2,2.5,true,assistant-02,course-02
