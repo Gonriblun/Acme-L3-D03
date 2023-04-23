@@ -1,0 +1,28 @@
+# messages-en.i18n
+#
+# Copyright (C) 2012-2023 Rafael Corchuelo.
+#
+# In keeping with the traditional purpose of furthering education and research, it is
+# the policy of the copyright owner to permit non-commercial use and redistribution of
+# this software. It has been tested carefully, but it is not guaranteed for any particular
+# purposes.  The copyright owner does not offer any warranties or representations, nor do
+# they accept any liabilities with respect to them.
+
+
+lecturer.courseLecture.form.label.lecture = Lecture
+lecturer.courseLecture.form.button.delete = Delete
+lecturer.courseLecture.form.button.create = Create
+
+lecturer.courseLecture.form.error.lecture = The selected lecture is yet in the course
+
+lecturer.courseLecture.form.error.course = The selected course is not editable
+
+lecturer.courseLecture.form.label.course = Course
+
+lecturer.courseLecture.form.lecture.title = Title of the lecture
+
+lecturer.courseLecture.form.lecture.summary = Summary of the lecture
+
+lecturer.courseLecture.form.lecture.info = Add the lecture with the following info to a course
+
+lecturer.courseLecture.form.lecture.delete.info = Delete lecture with the following info from a course

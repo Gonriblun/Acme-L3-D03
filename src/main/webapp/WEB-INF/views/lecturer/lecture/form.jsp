@@ -22,6 +22,7 @@
 	<acme:input-textbox code="lecturer.lecture.form.label.body" path="body"/>	
 	<acme:input-select code="lecturer.lecture.form.label.nature" path="lectureType" choices="${lectureTypes}"/>	
 	<acme:input-textbox code="lecturer.lecture.form.label.furtherInformation" path="furtherInformation"/>
+	<acme:input-textbox code="lecturer.lecture.form.label.draftMode" path="draftMode" readonly="true"/>
 	
 	<jstl:choose>
 		<jstl:when test="${acme:anyOf(_command, 'show|update|delete|publish') && draftMode == false}">	 
