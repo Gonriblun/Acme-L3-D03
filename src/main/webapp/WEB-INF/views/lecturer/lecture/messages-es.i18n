@@ -15,10 +15,11 @@ lecturer.lecture.list.label.estimatedLearningTime = Tiempo de Aprendizaje estima
 lecturer.lecture.form.label.title = Título:
 lecturer.lecture.form.label.abstractt = Resumen:
 lecturer.lecture.form.label.estimatedLearningTime = Tiempo de aprendizaje estimado:
+lecturer.lecture.list.label.lectureType = Tipo de lección
 lecturer.lecture.form.label.body = Cuerpo:
-lecturer.lecture.form.label.lectureType = Tipo de Clase:
 lecturer.lecture.form.label.furtherInformation = Información adicional:
 lecturer.lecture.form.label.draftMode = Modo borrador:
+
 
 lecturer.lecture.list.button.create = Crear lección
 

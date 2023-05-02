@@ -15,15 +15,11 @@ lecturer.course.list.label.retailPrice = Precio
 lecturer.course.form.label.code = Código
 lecturer.course.form.label.title = Título
 lecturer.course.form.label.courseAbstract = Resumen
-lecturer.course.form.label.retailPrice = Precio
+lecturer.course.form.label.retailPrice = precio
 lecturer.course.form.label.furtherInformationLink = Información adicional
 lecturer.course.form.label.lecturer = Profesor
 lecturer.course.form.label.drafMode = Modo borrador
-
-lecturer.course.form.error.spam = El texto introducido está considerado como Spam
-lecturer.course.form.error.nolecture = El curso que quieres publicar no tiene lecciones
-lecturer.course.form.error.nohandson = El curso que quieres publicar no tiene lecciones prácticas
-lecturer.course.form.error.lecturenp = Este curso contiene lecciones no publicadas
+lecturer.course.form.label.courseType = Tipo del Curso
 
 lecturer.course.lectures = Lecciones
 lecturer.course.create= Crear

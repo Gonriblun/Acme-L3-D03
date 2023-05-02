@@ -62,8 +62,8 @@ public class LecturerLectureCreateService extends AbstractService<Lecturer, Lect
 		tuple = super.unbind(object, "title", "abstractt", "estimatedLearningTime", "body", "lectureType", "furtherInformation", "lecturer");
 		final SelectChoices choices;
 		choices = SelectChoices.from(LectureType.class, object.getLectureType());
-		tuple.put("nature", choices.getSelected().getKey());
-		tuple.put("natures", choices);
+		tuple.put("lectureType", choices.getSelected().getKey());
+		tuple.put("lectureTypes", choices);
 		super.getResponse().setData(tuple);
 	}
 }

@@ -19,11 +19,9 @@ lecturer.course.form.label.retailPrice = Price
 lecturer.course.form.label.link = Further Information
 lecturer.course.form.label.lecturer = Lecturer
 lecturer.course.form.label.drafMode = Draft mode
+lecturer.course.form.label.courseType = Course Type
+lecturer.course.list.label.courseAbstract = Course Abstract
 
-lecturer.course.form.error.spam = The introduced text is considered Spam
-lecturer.course.form.error.nolecture = This course has no lectures
-lecturer.course.form.error.nohandson = This course has no hands-on lectures
-lecturer.course.form.error.lecturenp = Some lecture of this course is not published
 
 lecturer.course.lectures = Lectures
 lecturer.course.create = Create
