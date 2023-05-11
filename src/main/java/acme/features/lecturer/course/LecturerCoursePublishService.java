@@ -63,11 +63,14 @@ public class LecturerCoursePublishService extends AbstractService<Lecturer, Cour
 	@Override
 	public void validate(final Course object) {
 		assert object != null;
+		final boolean someLectureNotPublished;
+
 		final Collection<Lecture> lectures = this.repository.findLecturesByCourse(object.getId());
-		if (!lectures.isEmpty()) {
-			boolean publishedLectures;
-			publishedLectures = lectures.stream().allMatch(x -> x.isDraftMode() == false);
-		}
+
+		final int courseId = object.getId();
+		someLectureNotPublished = this.repository.someLectureNotPublishedByCourseId(courseId);
+
+		super.state(someLectureNotPublished, "*", "hay alguna lección que no está publicada");
 	}
 
 	@Override
@@ -82,7 +85,7 @@ public class LecturerCoursePublishService extends AbstractService<Lecturer, Cour
 		Tuple tuple;
 		tuple = super.unbind(object, "code", "title", "courseAbstract", "retailPrice", "link", "draftMode");
 		final List<Lecture> lectures = this.repository.findLecturesByCourse(object.getId()).stream().collect(Collectors.toList());
-		final CourseType courseType = object.getCourseType();
+		final CourseType courseType = object.calculateCourseType(lectures);
 		tuple.put("courseType", courseType);
 		super.getResponse().setData(tuple);
 	}
